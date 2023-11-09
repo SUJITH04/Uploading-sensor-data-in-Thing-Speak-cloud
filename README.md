@@ -58,14 +58,35 @@ Prototype and build IoT systems without setting up servers or developing web sof
 Automatically act on your data and communicate using third-party services like Twilio® or Twitter®</br>
 
 ![image](https://user-images.githubusercontent.com/71547910/235334056-3ba9579f-2f62-43b1-a714-8fde6cf9ef32.png)
-
-
 # PROGRAM:
+```
+const int trigPin = 9;
+const int echoPin = 10;
 
+long duration;
+int distance;
+void setup() {
+pinMode(trigPin, OUTPUT);
+pinMode(echoPin, INPUT);
+Serial.begin(9600);
+}
+
+void loop() 
+{
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echoPin, HIGH);
+  distance= duration*0.034/2;
+  Serial.print("Distance: ");
+  Serial.println(distance);
+}
+```
 # CIRCUIT DIAGRAM:
-
+![235773198-2b4d3037-4174-44f2-8ea8-b787d7e047f6](https://github.com/Jeevithha/Uploading-sensor-data-in-Thing-Speak-cloud/assets/123623197/255173e3-2253-4343-97ab-eefac2d59267)
 # OUTPUT:
-
+![235773283-d3050ed6-667a-47ac-b63f-203e3fa69b1b](https://github.com/Jeevithha/Uploading-sensor-data-in-Thing-Speak-cloud/assets/123623197/b2ca29de-0186-43d0-a35c-72fd0f086c9f)
 # RESULT:
 Thus the distance of the obstacle was monitored using Ultrasonic sensor and the distance values are uploaded in the Thing speak using ESP32 controller.
-
